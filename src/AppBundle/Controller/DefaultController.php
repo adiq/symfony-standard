@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\Type\FormA;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,12 +11,17 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="homepage")
+     * @throws \Symfony\Component\Form\Exception\AlreadySubmittedException
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
-        ]);
+        $form = $this->createForm(FormA::class);
+        $form->submit([]);
+
+        if ($form->isValid()) {
+            die('ok');
+        }
+
+        dump($form->getErrors(true, true));die;
     }
 }

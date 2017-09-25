@@ -1,0 +1,13 @@
+AppBundle\Model\FormAModel:
+    properties:
+        fieldOne:
+            - Valid: ~
+        fieldTwo:
+            - Valid: ~
+
+AppBundle\Model\FormBModel:
+    properties:
+        nestedField:
+            - NotBlank:
+                message: VALIDATION.NOT_BLANK
+                groups: [groupA]
