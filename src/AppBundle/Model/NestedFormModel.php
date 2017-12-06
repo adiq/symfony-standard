@@ -3,7 +3,7 @@
 namespace AppBundle\Model;
 
 
-class FormBModel
+class NestedFormModel
 {
     public $nestedField;
 }

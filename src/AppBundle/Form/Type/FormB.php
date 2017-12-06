@@ -2,13 +2,11 @@
 
 namespace AppBundle\Form\Type;
 
-
-
-use AppBundle\Model\FormBModel;
+use AppBundle\Model\FormModel;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Valid;
 
 class FormB extends AbstractType
 {
@@ -17,19 +15,14 @@ class FormB extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder
-            ->add('nestedField', TextType::class);
+        $builder->add('field', NestedForm::class, ['constraints' => [new Valid()]]);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             [
-                'data_class'         => FormBModel::class,
-                'validation_groups'  => ['Default', 'groupA']
+                'data_class' => FormModel::class
             ]
         );
     }

@@ -1,11 +1,9 @@
-AppBundle\Model\FormAModel:
+AppBundle\Model\FormModel:
     properties:
-        fieldOne:
-            - Valid: ~
-        fieldTwo:
+        field:
             - Valid: ~
 
-AppBundle\Model\FormBModel:
+AppBundle\Model\NestedFormModel:
     properties:
         nestedField:
             - NotBlank:
